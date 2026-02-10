@@ -6,6 +6,8 @@
 
 [NixOS-WSL Documentation](https://nix-community.github.io/NixOS-WSL/)
 
+[nix-channels](https://channels.nixos.org/)
+
 ## 命令
 
 安装 NixOS
@@ -22,6 +24,8 @@ sudo nix-channel --update
 sudo nixos-rebuild switch
 ```
 
+vim /etc/nixos/configuration.nix
+
 ```nixos
   environment.systemPackages = [
     pkgs.vim
@@ -37,14 +41,13 @@ sudo nixos-rebuild switch
   # Set up nix-ld
   programs.nix-ld.enable = true;
 
-  wsl.wslConf.interop.appendWindowsPath = false;
+  # Windows Subsystem for Linux
   wsl.interop.includePath = false;
-```
-
-## Home Manager
-
-```shell
-sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz home-manager
-sudo nix-channel --update
-sudo nix-channel --list
+  wsl.interop.register = true;
+  wsl.extraBin = [
+    {
+      name = "code";
+      src = "/mnt/c/Users/User/scoop/apps/vscode/current/bin/code";
+    }
+  ];
 ```
