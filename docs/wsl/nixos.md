@@ -43,6 +43,7 @@ vim /etc/nixos/configuration.nix
     pkgs.git
     pkgs.wget
     pkgs.docker
+    pkgs.gh
   ];
 
   # Docker
