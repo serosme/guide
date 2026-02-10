@@ -17,7 +17,15 @@ wsl --install --from-file nixos.wsl
 ```
 
 ```shell
+sudo nix-channel --add https://nixos.org/channels/nixos-25.11 nixos
+```
+
+```shell
 sudo nix-channel --update
+```
+
+```shell
+sudo ALL_PROXY=http://127.0.0.1:7890 nix-channel --update
 ```
 
 ```shell
@@ -27,6 +35,9 @@ sudo nixos-rebuild switch
 vim /etc/nixos/configuration.nix
 
 ```nixos
+  # Proxy
+  networking.proxy.default = "http://localhost:7890";
+
   environment.systemPackages = [
     pkgs.vim
     pkgs.git
