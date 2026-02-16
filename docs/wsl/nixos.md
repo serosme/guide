@@ -35,6 +35,7 @@ sudo nixos-rebuild switch
 vim /etc/nixos/configuration.nix
 
 ```nixos
+  nix.settings.substituters = lib.mkForce [ "https://mirrors.ustc.edu.cn/nix-channels/store" ];
   # Proxy
   networking.proxy.default = "http://localhost:7890";
 
