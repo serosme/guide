@@ -30,6 +30,11 @@ sudo ALL_PROXY=http://127.0.0.1:7890 nix-channel --update
 
 ```shell
 sudo nixos-rebuild switch
+sudo nix-channel --add https://mirrors.ustc.edu.cn/nix-channels/nixos-19.09 nixos
+sudo nix-channel --add https://mirrors.ustc.edu.cn/nix-channels/nixos-25.11 nixos
+
+sudo ALL_PROXY=http://127.0.0.1:7890 nix-channel --update
+sudo ALL_PROXY=http://127.0.0.1:7890 nixos-rebuild switch
 ```
 
 vim /etc/nixos/configuration.nix
